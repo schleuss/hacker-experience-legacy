@@ -153,16 +153,19 @@ class Player {
 
     public function getPlayerInfo($uid){
 
-        $this->session->newQuery();
-        $sqlSelect = "SELECT COUNT(*) AS total, login, gameIP, homeIP, gamePass, email FROM users WHERE id = $uid LIMIT 1";
-        $data = $this->pdo->query($sqlSelect)->fetch(PDO::FETCH_OBJ);
+        if( $uid > 0 ) {
+            $this->session->newQuery();
+            $sqlSelect = "SELECT COUNT(*) AS total, login, gameIP, homeIP, gamePass, email FROM users WHERE id = $uid LIMIT 1";
+            $data = $this->pdo->query($sqlSelect)->fetch(PDO::FETCH_OBJ);
 
-        if($data->total == 0){
+            if($data->total == 0){
+                exit();
+            }
+            
+            return $data;
+        } else{
             exit();
         }
-        
-        return $data;
-
     }
 
     public function unsetPlayerLearning(){
