@@ -25,7 +25,7 @@ mkdir -p data/mysql/ \
          data/html-data/ranking/
 
 echo 1 > data/status/queries.txt 
-chmod 777 data/mysql/ data/forum-cache/ data/status/ data/html-data/ -R
+chmod -R 777 data/mysql/ data/forum-cache/ data/status/ data/html-data/ 
 ```
 
 
