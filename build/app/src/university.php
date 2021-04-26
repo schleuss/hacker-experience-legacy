@@ -151,7 +151,12 @@ if($system->issetGet('opt')){
             $player->setPlayerLearning(2);
         }
         
-        header("Location:university?opt=certification");
+        
+        if (headers_sent()) {
+            print('<script>window.location.href="university?opt=certification"</script>');
+        } else {
+            header("Location:university?opt=certification");
+        }        
         exit();
 
     } else {

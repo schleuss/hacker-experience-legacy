@@ -579,44 +579,44 @@ if (ini_get("session.use_cookies")) {
     }
     
     public function help($page, $info = false){
-        
+        global $appDomain;
         $ext = '';
         
         switch($page){
             case 'clan':
-                return 'https://wiki.'.$appDomain.'/'._('en').':clans';
+                return 'http://wiki.'.$appDomain.'/'._('en').':clans';
             case 'missions':
                 if($info == 'level'){
                     $ext = _('#mission_level');
                 }
-                return 'https://wiki.'.$appDomain.'/'._('en').':missions'.$ext;
+                return 'http://wiki.'.$appDomain.'/'._('en').':missions'.$ext;
             case 'hardware':
-                return 'https://wiki.'.$appDomain.'/'._('en').':hardware';
+                return 'http://wiki.'.$appDomain.'/'._('en').':hardware';
             case 'log':
-                return 'https://wiki.'.$appDomain.'/'._('en').':log';
+                return 'http://wiki.'.$appDomain.'/'._('en').':log';
             case 'university':
-                return 'https://wiki.'.$appDomain.'/'._('en').':university';
+                return 'http://wiki.'.$appDomain.'/'._('en').':university';
             case 'finances':
-                return 'https://wiki.'.$appDomain.'/'._('en').':finances';
+                return 'http://wiki.'.$appDomain.'/'._('en').':finances';
             case 'list':
                 if($info == 'ddos'){
-                    return 'https://wiki.'.$appDomain.'/'._('en').':ddos';
+                    return 'http://wiki.'.$appDomain.'/'._('en').':ddos';
                 } elseif($info == 'collect'){
-                    return 'https://wiki.'.$appDomain.'/'._('en').':hacked_database';
+                    return 'http://wiki.'.$appDomain.'/'._('en').':hacked_database';
                 }
-                return 'https://wiki.'.$appDomain.'/'._('en').':hacked_database';
+                return 'http://wiki.'.$appDomain.'/'._('en').':hacked_database';
             case 'task':
-                return 'https://wiki.'.$appDomain.'/'._('en').':processes';
+                return 'http://wiki.'.$appDomain.'/'._('en').':processes';
             case 'software':
                 if($info == 'external'){
-                    return 'https://wiki.'.$appDomain.'/'._('en').':hardware'._('#external_hard_drive');
+                    return 'http://wiki.'.$appDomain.'/'._('en').':hardware'._('#external_hard_drive');
                 }
-                return 'https://wiki.'.$appDomain.'/'._('en').':softwares';
+                return 'http://wiki.'.$appDomain.'/'._('en').':softwares';
             case 'internet':
                 if($info == 'hack'){
-                    return 'https://wiki.'.$appDomain.'/'._('en').':hacking';
+                    return 'http://wiki.'.$appDomain.'/'._('en').':hacking';
                 }
-                return 'https://wiki.'.$appDomain.'/'._('en').':internet';
+                return 'http://wiki.'.$appDomain.'/'._('en').':internet';
                 
         }
         

@@ -1,3 +1,5 @@
+<?php require 'config.php'; ?>
+
 <p class="lead center"><?php echo _('Getting Help'); ?></p>
 <div class='row-fluid'>
     <div class='span12'>
