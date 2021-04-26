@@ -1,3 +1,27 @@
+
+Register all names in /etc/hosts
+
+```
+127.0.0.1   hacker.local
+127.0.0.1   br.hacker.local
+127.0.0.1   www.br.hacker.local
+127.0.0.1   wiki.hacker.local
+127.0.0.1   forum.hacker.local
+127.0.0.1   www.hacker.local
+127.0.0.1   forum.hacker.local
+127.0.0.1   en.hacker.local
+127.0.0.1   piwik.hacker.local
+127.0.0.1   status.hacker.local
+```
+
+Prepare directories
+
+```bash
+mkdir -p data/mysql/ data/forum-cache/ data/status/
+echo 1 > data/status/queries.txt 
+chmod 777 data/mysql/ data/forum-cache/ data/status/ -R
+```
+
 # Hacker Experience Legacy
 
 This is the source-code for Legacy, the first version of Hacker Experience I built from 2012-2014 and published on 2014. I made a promise I'd release it and here it is.

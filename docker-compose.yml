@@ -44,10 +44,10 @@ services:
           - ./data/mysql:/var/lib/mysql
           # Start database script
           - ./build/app/db/:/docker-entrypoint-initdb.d/
-          
-networks:
-  default:
-    driver: bridge
-    ipam:
-      config:
-        - subnet: 172.24.24.0/24
+
+#networks:
+#  default:
+#    driver: bridge
+#    ipam:
+#      config:
+#        - subnet: 172.24.24.0/24

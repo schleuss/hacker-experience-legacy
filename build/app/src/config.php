@@ -5,7 +5,7 @@ $wikiPath = 'http://localhost/wiki/';
 $version = '0.8';
 $versionStatus = ' BETA';
 $gameTitle = 'Hacker Experience '.$version.$versionStatus; //título do jogo
-$appDomain = "localhost";
+$appDomain = "hacker.local";
 $contactMail="contact@hackerexperience.com";
 
 static $processActions = Array(
