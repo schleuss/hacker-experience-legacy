@@ -1,2 +1,4 @@
-forum/cache/*
-/wiki/conf/*
+data/forum-cache/*.php
+data/mysql/*
+data/status/*
+log/*.log
