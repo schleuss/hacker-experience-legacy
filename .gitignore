@@ -1,4 +1,5 @@
 data/forum-cache/*.php
 data/mysql/*
 data/status/*
+data/html-data/
 log/*.log
