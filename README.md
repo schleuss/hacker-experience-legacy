@@ -17,9 +17,15 @@ Register all names in /etc/hosts
 Prepare directories
 
 ```bash
-mkdir -p data/mysql/ data/forum-cache/ data/status/
+mkdir -p data/mysql/ \
+         data/forum-cache/ \
+         data/status/ \
+         data/html-data/profile/ \
+         data/html-data/fame/ \
+         data/html-data/ranking/
+
 echo 1 > data/status/queries.txt 
-chmod 777 data/mysql/ data/forum-cache/ data/status/ -R
+chmod 777 data/mysql/ data/forum-cache/ data/status/ data/html-data/ -R
 ```
 
 

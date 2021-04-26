@@ -26,6 +26,7 @@ services:
           max-size: "512m"
       volumes:
           - ./build/app/src:/var/www
+          - ./data/html-data:/var/www/html
           - ./data/forum-cache:/var/www/forum/cache   
           - ./data/status:/var/www/status
           - ./log:/var/log/game

@@ -9,9 +9,9 @@ require '/var/www/classes/Fame.class.php';
 $session = new Session();
 $system = new System();
 
-require 'template/contentStart.php';
-
 $fame = new Fame();
+
+require 'template/contentStart.php';
 
 $user = ' active';
 $clan = '';

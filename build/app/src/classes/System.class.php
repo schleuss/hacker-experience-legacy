@@ -328,8 +328,11 @@ class System {
         }
 
         if($redirect != ''){
-
-            header("Location:$redirect");
+            if (headers_sent()) {
+                print('<script>window.location.href="' . $redirect . '"</script>');
+            } else {
+                header("Location:$redirect");
+            }
             exit();        
   
         }

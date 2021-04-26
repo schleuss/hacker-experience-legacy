@@ -9,8 +9,6 @@ require '/var/www/classes/System.class.php';
 $session = new Session();
 $system = new System();
 
-require 'template/contentStart.php';
-
 $player = new Player($_SESSION['id']);
 $internet = new Internet();
 $ranking = new Ranking();
@@ -20,6 +18,8 @@ if(!$ranking->cert_have(2)){
     header("Location:university?opt=certification");
     exit();
 }
+
+require 'template/contentStart.php';
 
 if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST)){
 

@@ -19,9 +19,9 @@ def __(string):
 def install_gettext(lang):
 
 	if lang == 'en':
-		lang = 'en_US'
+		lang = 'en_US.utf8'
 	elif lang == 'br' or lang == 'pt':
-		lang = 'pt_BR'
+		lang = 'pt_BR.utf8'
 
 	locale.setlocale(locale.LC_ALL, lang)
 	loc = locale.getlocale()

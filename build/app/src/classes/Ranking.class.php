@@ -708,28 +708,29 @@ class Ranking extends Player {
         $sql = 'SELECT 
                     COUNT(id) AS total
                 FROM round_stats';
-        $this->serverInfo->totalrounds = $this->pdo->query($sql)->fetch(PDO::FETCH_OBJ)->total;
-        
-        
-        $this->serverInfo->timeplaying /= 60;
-       
-        if($round == 'all'){
-            $this->session->newQuery();
-            $sql = 'SELECT TIMESTAMPDIFF(DAY, startDate, NOW()) AS roundDuration FROM round WHERE id = 1 LIMIT 1';
-            $this->serverInfo->roundstarted = $this->pdo->query($sql)->fetch(PDO::FETCH_OBJ)->roundduration;
 
-        } else {
-            $this->serverInfo->totallisted = number_format($this->serverInfo->totallisted);
-            $this->serverInfo->totalvirus = number_format($this->serverInfo->totalvirus);
-                        
-            $this->session->newQuery();
-            $sql = 'SELECT TIMESTAMPDIFF(DAY, startDate, NOW()) AS roundDuration FROM round ORDER BY id DESC LIMIT 1';
-            $this->serverInfo->roundstarted = $this->pdo->query($sql)->fetch(PDO::FETCH_OBJ)->roundduration;
-            
-            $this->session->newQuery();
-            $sql = 'SELECT COUNT(*) AS total FROM users';
-            $this->serverInfo->totalusers = $this->pdo->query($sql)->fetch(PDO::FETCH_OBJ)->total;
+        if($this->serverInfo) {
+            $this->serverInfo->totalrounds = $this->pdo->query($sql)->fetch(PDO::FETCH_OBJ)->total;
+            $this->serverInfo->timeplaying /= 60;
 
+            if($round == 'all'){
+                $this->session->newQuery();
+                $sql = 'SELECT TIMESTAMPDIFF(DAY, startDate, NOW()) AS roundDuration FROM round WHERE id = 1 LIMIT 1';
+                $this->serverInfo->roundstarted = $this->pdo->query($sql)->fetch(PDO::FETCH_OBJ)->roundduration;
+    
+            } else {
+                $this->serverInfo->totallisted = number_format($this->serverInfo->totallisted);
+                $this->serverInfo->totalvirus = number_format($this->serverInfo->totalvirus);
+                            
+                $this->session->newQuery();
+                $sql = 'SELECT TIMESTAMPDIFF(DAY, startDate, NOW()) AS roundDuration FROM round ORDER BY id DESC LIMIT 1';
+                $this->serverInfo->roundstarted = $this->pdo->query($sql)->fetch(PDO::FETCH_OBJ)->roundduration;
+                
+                $this->session->newQuery();
+                $sql = 'SELECT COUNT(*) AS total FROM users';
+                $this->serverInfo->totalusers = $this->pdo->query($sql)->fetch(PDO::FETCH_OBJ)->total;
+    
+            }
         }
         
         return $this->serverInfo;

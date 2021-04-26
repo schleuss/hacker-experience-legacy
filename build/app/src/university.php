@@ -1,5 +1,8 @@
 <?php
+
 require '/var/www/classes/System.class.php';
+
+
 require '/var/www/classes/Session.class.php';
 require '/var/www/classes/Player.class.php';
 require '/var/www/classes/PC.class.php';
@@ -14,6 +17,7 @@ $software = new SoftwareVPC();
 $research = 'active';
 $cert = '';
 $center = '';
+
 
 if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST)){
 

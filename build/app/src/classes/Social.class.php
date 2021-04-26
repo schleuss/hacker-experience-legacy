@@ -70,7 +70,7 @@ class Social {
     
     public function profile_show($l){
 
-        require 'html/profile/'.$this->profileID.'_'.$l.'.html';
+        @require '/var/www/html/profile/'.$this->profileID.'_'.$l.'.html';
   
         $friends = 1;
         if($this->profileID != $_SESSION['id']){

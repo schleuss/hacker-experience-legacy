@@ -1,5 +1,7 @@
 FROM php:5-fpm
 
+ENV DEBIAN_FRONTEND=noninteractive
+
 RUN apt-get update && apt-get install -y \
         libfreetype6-dev \
         libpng-dev \
@@ -9,7 +11,15 @@ RUN apt-get update && apt-get install -y \
         libldb-dev \
         libldap2-dev \
         libmagickwand-dev \
-        imagemagick
+        imagemagick \
+        locales
+
+RUN sed -i -e 's/# en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/' /etc/locale.gen && \
+    sed -i -e 's/# pt_BR.UTF-8 UTF-8/pt_BR.UTF-8 UTF-8/' /etc/locale.gen && \
+    dpkg-reconfigure --frontend=noninteractive locales && \
+    update-locale LANG=en_US.UTF-8
+
+ENV LANG en_US.UTF-8 
 
 RUN docker-php-ext-install -j$(nproc) iconv 
 
@@ -42,3 +52,4 @@ RUN ln -s /usr/lib/x86_64-linux-gnu/libldap.so /usr/lib/libldap.so && \
 RUN docker-php-ext-install -j$(nproc) ldap 
 
 RUN apt-get install -y python python-pip python-mysqldb
+

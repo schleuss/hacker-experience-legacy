@@ -15,6 +15,8 @@ if(isset($_COOKIE['PHPSESSID'])){
     $session = new Session();
 }
 
+
+
 if(!isset($_SESSION['id'])){
     
     if(isset($_GET['nologin'])){

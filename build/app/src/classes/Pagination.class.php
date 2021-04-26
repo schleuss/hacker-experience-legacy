@@ -855,7 +855,7 @@ Class Pagination {
                                     <tbody>            
 <?php                    
                 
-require 'html/ranking/user_'.$pageToLoad.'.html';
+@require 'html/ranking/user_'.$pageToLoad.'.html';
 
 ?>
                                     </tbody>

@@ -17,6 +17,9 @@ if(isset($_SESSION['id'])){
         exit('Invalid session id.');
     }
     
+
+    
+    
     require_once '/var/www/classes/Ranking.class.php';
     
     $ranking = new Ranking();
@@ -43,7 +46,7 @@ if(isset($_SESSION['id'])){
     if($_SESSION['ROUND_STATUS'] != 1){
         
         $redirect = TRUE;
-        
+
         switch($_SERVER['SCRIPT_NAME']){
             case '/index.php':
             case '/index':
@@ -63,6 +66,28 @@ if(isset($_SESSION['id'])){
             case '/profile':
             case '/clan.php':
             case '/clan':
+            case '/university.php':
+            case '/university':
+            case '/hardware.php':
+            case '/hardware':
+            case '/processes.php':
+            case '/processes':
+            case '/software.php':
+            case '/software':
+            case '/internet.php':
+            case '/internet':
+            case '/log.php':
+            case '/log':
+            case '/finances.php':
+            case '/finances':
+            case '/list.php':
+            case '/list':
+            case '/missions.php':
+            case '/missions':
+            case '/clan.php':
+            case '/clan':
+            case '/fame.php':
+            case '/fame':                
                 $redirect = FALSE;
                 break;
         }
