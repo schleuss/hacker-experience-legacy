@@ -99,9 +99,9 @@ def add(npcType, npcInfo, key):
 
 		cur.execute(""" SELECT npcID
 						FROM npc_key
-						WHERE npc_key.key = %s
+						WHERE npc_key.key = '%s'
 						LIMIT 1
-					""", key)
+					""" % (key) )
 
 		for npcID in cur.fetchall():
 			npcID = str(npcID[0])

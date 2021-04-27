@@ -1030,3 +1030,9 @@ CREATE TABLE phpbb_zebra (
 	PRIMARY KEY (user_id, zebra_id)
 ) CHARACTER SET `utf8` COLLATE `utf8_bin`;
 
+
+ALTER TABLE `phpbb_topics` ADD `topic_clan` INT( 5 ) UNSIGNED NOT NULL DEFAULT '0', ADD INDEX ( `topic_clan` );
+
+ALTER TABLE `phpbb_users` ADD `user_game_id` INT( 5 ) UNSIGNED NOT NULL;
+
+ALTER TABLE `phpbb_forums` ADD `forum_clan` INT( 5 ) UNSIGNED NOT NULL DEFAULT '0', ADD INDEX ( `forum_clan` );

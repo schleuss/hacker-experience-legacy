@@ -35,6 +35,17 @@ start with
 docker-compose up 
 ```
 
+Wait Mysql start ..
+execute the init command
+
+```bash
+
+docker exec -it hacker-experience-legacy_php_1 /usr/local/bin/php  /var/www/cron/createRound.php
+
+
+```
+
+
 Access http://hacker.local/
 
 

@@ -221,8 +221,9 @@ userBadge = userID = badgeID = None
 
 if __name__ == '__main__':
 
-	userBadge = sys.argv[1]
-	userID = int(sys.argv[2])
-	badgeID = int(sys.argv[3])
+    if len(sys.argv) >= 4:
+        userBadge = sys.argv[1]
+        userID = int(sys.argv[2])
+        badgeID = int(sys.argv[3])
 
-	badge_add()
+        badge_add()

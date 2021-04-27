@@ -3,7 +3,7 @@
 // 2019: This script ends the round. It is also called from within the game.
 // 2019: Before removing the exit below, make sure to not allow anyone to externally (remotely) execute this script.
 
-exit();
+//exit();
 exec('/bin/sh ../cron2/updateStatsAndRanking.sh');
 
 function getExtension($softType) {
@@ -423,6 +423,9 @@ for($i = 4; $i <= 10; $i++){
 }
 
 $pdo->query('INSERT INTO round (id, startDate) VALUES (\''.($curRound + 1).'\', DATE_ADD(NOW(), INTERVAL 1 DAY))');
+
+exec('/usr/bin/env python /var/www/cron2/newRoundGenerator.py');
+
 
 echo round(microtime(true)-$start,3)*1000 .' ms';
 
