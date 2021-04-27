@@ -1,6 +1,6 @@
 <?php
 
-require_once '/var/www/config.php';
+require_once 'config.php';
 
 $fbServerURL = 'http://'.$appDomain.'/';
 
@@ -30,7 +30,7 @@ bind_textdomain_codeset($domain, 'UTF-8');
 textdomain($domain);
 
 require_once 'twitter/twitteroauth.php';
-require_once '/var/www/classes/Facebook.class.php';
+require_once $_SERVER['DOCUMENT_ROOT'].'/classes/Facebook.class.php';
 
 switch($fbServerURL){
     case 'http://'.$appDomain.'/':
@@ -138,15 +138,15 @@ if(isset($_SESSION['TYP'])){
         <meta property="og:locale" content="en_US">
         <meta property="og:locale:alternate" content="pt_BR">
         <meta property="og:title" content="Hacker Experience"/>
-        <meta property="og:image" content="https://<?php echo $appDomain; ?>/images/og.png"/>
-        <meta property="og:url" content="https://<?php echo $appDomain; ?>/"/>
+        <meta property="og:image" content="http://<?php echo $appDomain; ?>/images/og.png"/>
+        <meta property="og:url" content="http://<?php echo $appDomain; ?>/"/>
         <meta property="og:description" content="Hacker Experience is a browser-based hacking simulation game, where you play the role of a hacker seeking for money and power. Join now!"/>
 <?php } elseif ($_GET['fb_locale'] == 'pt_BR'){ ?>
         <meta property="og:locale" content="pt_BR">
         <meta property="og:locale:alternate" content="en_US">
         <meta property="og:title" content="Hacker Experience"/>
-        <meta property="og:image" content="https://<?php echo $appDomain; ?>/images/ogbr.png"/>
-        <meta property="og:url" content="https://<?php echo $appDomain; ?>/"/>
+        <meta property="og:image" content="http://<?php echo $appDomain; ?>/images/ogbr.png"/>
+        <meta property="og:url" content="http://<?php echo $appDomain; ?>/"/>
         <meta property="og:description" content="Hacker Experience é um browser-game de simulação de hacking, onde você assume o papel de um hacker buscando dinheiro e poder. Cadastre-se agora!"/>
 <?php } ?>
         <link href="css/bootstrap.css" rel="stylesheet">
@@ -410,7 +410,7 @@ if($msgRegister){
                             <p><?php echo _('Here comes a <a href="http://www.paulgraham.com/gba.html">looong discussion</a>. Many believe the word <em>hacker</em> should designate the so-called white hat (talented programmer, or an ethical hacker). Others, assume it to mean criminals behind the screen.'); ?></p>
                             <p><?php echo _('<a href="http://duartes.org/gustavo/blog/post/first-recorded-usage-of-hacker/">History has shown us</a> that maybe it really was meant to define the bad guys, however we do believe that hacker means <a href="https://stallman.org/articles/on-hacking.html">way more</a> than that.'); ?></p>
                             <p><?php echo _('Regardless of definition, we want our users to enjoy the game, whether they call it Hacker or Cracker Experience. That\'s it, name whatever you want.'); ?></p>
-                            <p><?php echo _('Meanwhile, we have a special <a href="https://forum.hackerexperience.com/">board designated to teach computer science and programming</a> for people. Instead of engaging into useless flame wars, feel free to join and share your knowledge to others. I\'d call <em>that</em> hacker :)'); ?></p>
+                            <p><?php echo _('Meanwhile, we have a special <a href="http://' . $appDomain . '/forum/">board designated to teach computer science and programming</a> for people. Instead of engaging into useless flame wars, feel free to join and share your knowledge to others. I\'d call <em>that</em> hacker :)'); ?></p>
                         </div>                          
                     </div>
                     <div class="faq-buttons-intro">
@@ -430,9 +430,9 @@ if($msgRegister){
                     <h5 class="footer-title"><?php echo _('NAVIGATE'); ?></h5>
                     <ul>
                         <li><a target="__blank" href="privacy" class="scroll"><?php echo _('PRIVACY'); ?></a></li>
-                        <li><a href="http://status.<?php echo $appDomain; ?>/" class="scroll">STATUS</a></li>
-                        <li><a href="http://forum.<?php echo $appDomain; ?>/" class="scroll"><?php echo _('FORUM'); ?></a></li>
-                        <li><a href="http://wiki.<?php echo $appDomain; ?>/" class="scroll">WIKI</a></li>
+                        <li><a href="http://<?php echo $appDomain; ?>/status/" class="scroll">STATUS</a></li>
+                        <li><a href="http://<?php echo $appDomain; ?>/forum/" class="scroll"><?php echo _('FORUM'); ?></a></li>
+                        <li><a href="http://<?php echo $appDomain; ?>/wiki/" class="scroll">WIKI</a></li>
                     </ul>
                 </div>
                 <div id="legal-disclaimer" class="three columns">

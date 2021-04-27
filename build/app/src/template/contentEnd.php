@@ -1,5 +1,5 @@
 <?php
-
+require_once 'config.php';
 $requestURI = $_SERVER['REQUEST_URI'];
 $phpSelf = $_SERVER['PHP_SELF'];
 
@@ -78,10 +78,10 @@ if(isset($_SESSION['EXEC_TIME'])){
 
         <div id="breadcrumb" class="center">
             <span class="pull-left hide-phone" style="margin-left: 10px;"><a href="legal" ><font color=""><?php echo _("Terms of Use"); ?></font></a></span>
-            <span class="pull-left hide-phone"><a href="https://forum.hackerexperience.com/" ><font color=""><?php echo _("Forum"); ?></font></a></span>
+            <span class="pull-left hide-phone"><a href="http://<?php echo $appDomain; ?>/forum/" ><font color=""><?php echo _("Forum"); ?></font></a></span>
             <span class="pull-left hide-phone"><a href="stats" ><?php echo _("Stats"); ?></a></span>
             
-            <span class="center">2014 &copy; <b>NeoArt Labs</b><a href="https://status.hackerexperience.com/"><?php echo $queries; ?> <?php echo _("queries in"); ?> <?php echo $time; ?> ms</a></span>
+            <span class="center">2014 &copy; <b>NeoArt Labs</b><a href="http://<?php echo $appDomain; ?>/status/"><?php echo $queries; ?> <?php echo _("queries in"); ?> <?php echo $time; ?> ms</a></span>
             
             <span id="credits" class="pull-right hide-phone link"><a><?php echo _("Credits"); ?></a></span>
             <span id="report-bug" class="pull-right hide-phone link"><a><?php echo _("Report Bug"); ?></a></span>
@@ -322,16 +322,12 @@ if($crudePage == 'internet'){
 }
 ?>
     </body>
-<!--
-    Hello! I've just got to let you know.
-    www.neoartgames.com
--->
 </html>
 <?php
 
 if(array_key_exists('BUFFER_QUERY', $_SESSION)){
     if($_SESSION['BUFFER_QUERY'] >= 500 || rand(1,20) == 1){
-        exec('/usr/bin/env python /var/www/python/query_counter.py '.$_SESSION['BUFFER_QUERY']);
+        exec('/usr/bin/env python /var/www/python/query_counter.py '.$_SESSION['BUFFER_QUERY']); // CHANGE TO ABSOLUTE GAME PATH
         $_SESSION['BUFFER_QUERY'] = 0;
     }
 }

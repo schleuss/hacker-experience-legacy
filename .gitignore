@@ -1,3 +1,4 @@
+build/app/src/wiki/data/cache/
 data/forum-cache/*.php
 data/mysql/*
 data/status/*

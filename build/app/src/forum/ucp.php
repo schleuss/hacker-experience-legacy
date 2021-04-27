@@ -8,7 +8,7 @@
 *
 */
 
-require_once '/var/www/config.php';
+require_once 'config.php';
 
 /**
 * @ignore

@@ -16,7 +16,6 @@ if (!defined('IN_PHPBB'))
 	exit;
 }
 
-
 require($phpbb_root_path . 'includes/startup.' . $phpEx);
 
 if (file_exists($phpbb_root_path . 'config.' . $phpEx))
@@ -92,7 +91,6 @@ require($phpbb_root_path . 'includes/cache.' . $phpEx);
 require($phpbb_root_path . 'includes/template.' . $phpEx);
 require($phpbb_root_path . 'includes/session.' . $phpEx);
 require($phpbb_root_path . 'includes/auth.' . $phpEx);
-
 
 require($phpbb_root_path . 'includes/functions.' . $phpEx);
 require($phpbb_root_path . 'includes/functions_content.' . $phpEx);

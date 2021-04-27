@@ -61,10 +61,13 @@ include(DOKU_INC.'inc/config_cascade.php');
 global $conf;
 $conf = array();
 
+$conf['savedir'] = $_SERVER['DOCUMENT_ROOT'].'/wiki/data';
+
 // load the global config file(s)
 foreach (array('default','local','protected') as $config_group) {
     if (empty($config_cascade['main'][$config_group])) continue;
     foreach ($config_cascade['main'][$config_group] as $config_file) {
+        
         if (@file_exists($config_file)) {
             include($config_file);
         }
@@ -324,6 +327,7 @@ function init_path($path){
     // check existence
     $p = fullpath($path);
     if(!@file_exists($p)){
+        
         $p = fullpath(DOKU_INC.$path);
         if(!@file_exists($p)){
             return '';
@@ -331,9 +335,9 @@ function init_path($path){
     }
 
     // check writability
-    if(!@is_writable($p)){
-        return '';
-    }
+//    if(!@is_writable($p)){
+//        return '';
+//    }
 
     // check accessability (execute bit) for directories
     if(@is_dir($p) && !@file_exists("$p/.")){

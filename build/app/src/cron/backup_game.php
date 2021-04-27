@@ -1,6 +1,6 @@
 <?php
 
-require '/var/www/ses/aws-autoloader.php';
+require 'ses/aws-autoloader.php';
 
 use Aws\S3\S3Client;
 

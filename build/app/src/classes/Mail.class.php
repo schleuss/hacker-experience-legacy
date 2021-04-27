@@ -1,6 +1,6 @@
 <?php
 
-require_once '/var/www/classes/Player.class.php';
+require_once $_SERVER['DOCUMENT_ROOT'].'/classes/Player.class.php';
 
 class Mail {
 
@@ -272,7 +272,7 @@ class Mail {
 
         if (self::countMails() != '0') {
 
-            require_once '/var/www/classes/Pagination.class.php';
+            require_once $_SERVER['DOCUMENT_ROOT'].'/classes/Pagination.class.php';
             $pagination = new Pagination();
 
             $pagination->paginate($id, 'mailAll', '5', 'page', 1);
@@ -437,7 +437,7 @@ class Mail {
             $closeLink = '</a>';
         } else {
             
-            require '/var/www/classes/Storyline.class.php';
+            require $_SERVER['DOCUMENT_ROOT'].'/classes/Storyline.class.php';
             $this->storyline = new Storyline();
             
             switch($this->mailInfo->from){
@@ -459,7 +459,7 @@ class Mail {
         $profilePic = $this->player->getProfilePic($this->mailInfo->from, $this->mailInfo->sentby, TRUE);
 
         
-        require '/var/www/classes/Purifier.class.php';
+        require $_SERVER['DOCUMENT_ROOT'].'/classes/Purifier.class.php';
         $purifier = new Purifier();
         $purifier->set_config('mail');
 
@@ -567,7 +567,7 @@ if($this->mailInfo->from != $_SESSION['id']){
 
         if($this->mailInfo->from > 0){
             
-            require '/var/www/classes/Clan.class.php';
+            require $_SERVER['DOCUMENT_ROOT'].'/classes/Clan.class.php';
 
             $player = new Player();
             $ranking = new Ranking();
@@ -798,7 +798,7 @@ for($i = 0; $i < sizeof($displayArr); $i++){
 
         $id = $_SESSION['id'];
 
-        require_once '/var/www/classes/Pagination.class.php';
+        require_once $_SERVER['DOCUMENT_ROOT'].'/classes/Pagination.class.php';
         $pagination = new Pagination();
 
         $pagination->paginate($id, 'mailSent', '5', 'action=outbox&page', 1);
@@ -953,7 +953,7 @@ for($i = 0; $i < sizeof($displayArr); $i++){
                 
                 if($type == 1 || $type == 2){
 
-                    require_once '/var/www/classes/Storyline.class.php';
+                    require_once $_SERVER['DOCUMENT_ROOT'].'/classes/Storyline.class.php';
                     $storyline = new Storyline();
                     
                     $userIP = $this->player->getPlayerInfo($_SESSION['id'])->gameip;
@@ -971,7 +971,7 @@ for($i = 0; $i < sizeof($displayArr); $i++){
                 break;
             case -3:
                 
-                require_once '/var/www/classes/Storyline.class.php';
+                require_once $_SERVER['DOCUMENT_ROOT'].'/classes/Storyline.class.php';
                 $storyline = new Storyline();
 
                 $userIP = $this->player->getPlayerInfo($_SESSION['id'])->gameip;
@@ -994,7 +994,7 @@ for($i = 0; $i < sizeof($displayArr); $i++){
         $from = 1;
         $type = 1;
         $subject = _('Welcome to Hacker Experience!');
-        $text = sprintf(_('Greetings, %s!<br/><br/>Thanks for trying out Hacker Experience, we are very excited to have you on board. Congratulations on completing the tutorial. It wasn\'t that hard, right? <br/><br/>There are <strong>a lot</strong> more things to do in the game, if you get stuck don\'t hesitate in talking to us.<br/><br/>The fastest way of getting help is posting at our <a href="http://forum.hackerexperience.com/">community board</a>. We will happly guide you through the game. You can also find a great resource information on our <a href="http://wiki.hackerexperience.com/">Wiki page</a>.<br/>Replying to this mail is another option. I\'d be thrilled to talk to you :)<br/><br/>(By the way, I just sent you 1.337 BTC. You can see it on the Finances page. Enjoy!)<br/><br/>Pardon the pun, but we hope you have a great <i>experience</i> here!!<br/><br/>Happy hacking!<br/>Renato.'), $this->player->getPlayerInfo($_SESSION['id'])->login);
+        $text = sprintf(_('Greetings, %s!<br/><br/>Thanks for trying out Hacker Experience, we are very excited to have you on board. Congratulations on completing the tutorial. It wasn\'t that hard, right? <br/><br/>There are <strong>a lot</strong> more things to do in the game, if you get stuck don\'t hesitate in talking to us.<br/><br/>The fastest way of getting help is posting at our <a href="http://' . $appDomain . '/forum/">community board</a>. We will happly guide you through the game. You can also find a great resource information on our <a href="http://wiki.hackerexperience.com/">Wiki page</a>.<br/>Replying to this mail is another option. I\'d be thrilled to talk to you :)<br/><br/>(By the way, I just sent you 1.337 BTC. You can see it on the Finances page. Enjoy!)<br/><br/>Pardon the pun, but we hope you have a great <i>experience</i> here!!<br/><br/>Happy hacking!<br/>Renato.'), $this->player->getPlayerInfo($_SESSION['id'])->login);
         
         self::newMail($to, $subject, $text, $type, $from);
         

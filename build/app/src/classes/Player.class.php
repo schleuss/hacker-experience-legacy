@@ -14,9 +14,9 @@ class Player {
     
     public function __construct($id = ''){
 
-        require_once '/var/www/classes/Session.class.php';
-        require_once '/var/www/classes/NPC.class.php';
-        require_once '/var/www/config.php';
+        require_once $_SERVER['DOCUMENT_ROOT'].'/classes/Session.class.php';
+        require_once $_SERVER['DOCUMENT_ROOT'].'/classes/NPC.class.php';
+        require_once 'config.php';
         $this->session = new Session();
         $this->pdo = PDO_DB::factory();
         $this->npc = new NPC();
@@ -60,7 +60,7 @@ class Player {
                         $system->handleError('Invalid bank account.', $postRedirect);
                     }
                     
-                    require '/var/www/classes/Finances.class.php';
+                    require $_SERVER['DOCUMENT_ROOT'].'/classes/Finances.class.php';
                     $finances = new Finances();
 
                     if($finances->totalMoney() < $pwdInfo['PRICE']){
@@ -81,7 +81,7 @@ class Player {
                                         
                 }
 
-                require '/var/www/classes/Process.class.php';
+                require $_SERVER['DOCUMENT_ROOT'].'/classes/Process.class.php';
                 $process = new Process();
                 
                 if($process->newProcess($_SESSION['id'], 'RESET_PWD', '', 'local', '', $acc, '', 0)){
@@ -372,8 +372,8 @@ class Player {
                 
                 if(sizeof($userInfo) > 0){
                 
-                    require '/var/www/classes/PC.class.php';
-                    require '/var/www/classes/Clan.class.php';
+                    require $_SERVER['DOCUMENT_ROOT'].'/classes/PC.class.php';
+                    require $_SERVER['DOCUMENT_ROOT'].'/classes/Clan.class.php';
                     
                     $software = new SoftwareVPC();
                     $clan = new Clan();
@@ -568,7 +568,7 @@ require 'html/fame/'. ($this->curRound - 1) .'_'.$pathName.'_preview.html';
     
     public function showGameOver(){
         
-        require '/var/www/classes/Storyline.class.php';
+        require $_SERVER['DOCUMENT_ROOT'].'/classes/Storyline.class.php';
         $storyline = new Storyline();
         
         $this->curRound = $storyline->round_current();        
@@ -691,10 +691,10 @@ require 'html/fame/'. ($this->curRound - 1) .'_'.$pathName.'_preview.html';
     
     public function showIndex(){
 
-        //require '/var/www/classes/Forum.class.php';
+        //require $_SERVER['DOCUMENT_ROOT'].'/classes/Forum.class.php';
         //$this->forum = new Forum();
 
-        require_once '/var/www/classes/Storyline.class.php';
+        require_once $_SERVER['DOCUMENT_ROOT'].'/classes/Storyline.class.php';
         $this->storyline = new Storyline();     
         
         ?>
@@ -833,7 +833,7 @@ require 'html/fame/'. ($this->curRound - 1) .'_'.$pathName.'_preview.html';
     public function forum_show($page){
         
         if(!$this->forum){
-            require_once '/var/www/classes/Forum.class.php';
+            require_once $_SERVER['DOCUMENT_ROOT'].'/classes/Forum.class.php';
             $this->forum = new Forum();
         }
         
@@ -943,7 +943,7 @@ require 'html/fame/'. ($this->curRound - 1) .'_'.$pathName.'_preview.html';
             
             case 'hardware':
                 
-                    require_once '/var/www/classes/PC.class.php';
+                    require_once $_SERVER['DOCUMENT_ROOT'].'/classes/PC.class.php';
                     $hardware = new HardwareVPC();
                     
                     $hardwareInfo = $hardware->getHardwareInfo($_SESSION['id'], '');
@@ -1020,8 +1020,8 @@ require 'html/fame/'. ($this->curRound - 1) .'_'.$pathName.'_preview.html';
                 break;
             case 'userinfo':
 
-                        require_once '/var/www/classes/Clan.class.php';
-                        require_once '/var/www/classes/Process.class.php';
+                        require_once $_SERVER['DOCUMENT_ROOT'].'/classes/Clan.class.php';
+                        require_once $_SERVER['DOCUMENT_ROOT'].'/classes/Process.class.php';
                 
                         $clan = new Clan();
                         $process = new Process();
@@ -1266,7 +1266,7 @@ require 'html/fame/'. ($this->curRound - 1) .'_'.$pathName.'_preview.html';
                 break;
             case 'news':
                 
-                require '/var/www/classes/News.class.php';
+                require $_SERVER['DOCUMENT_ROOT'].'/classes/News.class.php';
                 $news = new News();
                 
                 

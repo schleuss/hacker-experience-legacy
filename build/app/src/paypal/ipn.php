@@ -43,11 +43,6 @@ $id = $_POST['custom'];
 $error = FALSE;
 
 
-//if(!PagarMe::validateFingerprint($id, $fingerprint)) {
-//    //TODO: report (tentativa de roubo)
-//    exit();
-//}
-
 //$status = $_POST['current_status'];
 
 if($verified){

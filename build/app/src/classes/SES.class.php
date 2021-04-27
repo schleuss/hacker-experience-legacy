@@ -1,7 +1,7 @@
 <?php
 
-require '/var/www/ses/aws-autoloader.php';
-require_once '/var/www/config.php';
+require $_SERVER['DOCUMENT_ROOT'].'/ses/aws-autoloader.php';
+require_once 'config.php';
 
 use Aws\Ses\SesClient;
 
@@ -40,7 +40,7 @@ class SES {
                 
                 $subject = 'Hacker Experience email confirmation';
                 
-                $html = file_get_contents(_('/var/www/ses/tpl/verify.html'));
+                $html = file_get_contents(_($_SERVER['DOCUMENT_ROOT'].'/ses/tpl/verify.html'));
                 
                 $html = str_replace('%USER%', $info['user'], $html);
                 $html = str_replace('%KEY%', $info['key'], $html);
@@ -56,7 +56,7 @@ class SES {
                 
                 $subject = 'Welcome to Hacker Experience!';
                 
-                $html = file_get_contents(_('/var/www/ses/tpl/welcome.html'));
+                $html = file_get_contents(_($_SERVER['DOCUMENT_ROOT'].'/ses/tpl/welcome.html'));
                 
                 $html = str_replace('%USER%', $info['user'], $html);
                 
@@ -68,7 +68,7 @@ class SES {
                 
                 $subject = 'Order in progress';
                 
-                $html = file_get_contents(_('/var/www/ses/tpl/premium_waiting.html'));
+                $html = file_get_contents(_($_SERVER['DOCUMENT_ROOT'].'/ses/tpl/premium_waiting.html'));
                 
                 $html = str_replace('%USER%', $info['user'], $html);
                 $html = str_replace('%PLAN%', $info['plan'], $html);
@@ -82,11 +82,11 @@ class SES {
                 
                 $subject = 'Order confirmation';
                 
-                $html = file_get_contents(_('/var/www/ses/tpl/premium_success.html'));
+                $html = file_get_contents(_($_SERVER['DOCUMENT_ROOT'].'/ses/tpl/premium_success.html'));
                 
                 if($lang != false){
                     if($lang == 'pt' || $lang == 'br' || $lang == 'pt_BR'){
-                        $html = file_get_contents('/var/www/ses/tpl/premium_success_br.html');
+                        $html = file_get_contents($_SERVER['DOCUMENT_ROOT'].'/ses/tpl/premium_success_br.html');
                     }
                 }
                 
@@ -106,11 +106,11 @@ class SES {
                 
                 $subject = 'Order refused';
                 
-                $html = file_get_contents(_('/var/www/ses/tpl/premium_refused.html'));
+                $html = file_get_contents(_($_SERVER['DOCUMENT_ROOT'].'/ses/tpl/premium_refused.html'));
                 
                 if($lang != false){
                     if($lang == 'pt' || $lang == 'br' || $lang == 'pt_BR'){
-                        $html = file_get_contents('/var/www/ses/tpl/premium_refused_br.html');
+                        $html = file_get_contents($_SERVER['DOCUMENT_ROOT'].'/ses/tpl/premium_refused_br.html');
                     }
                 }
                 
@@ -143,11 +143,11 @@ class SES {
                 
                 $subject = 'Reset account password';
                 
-                $html = file_get_contents(_('/var/www/ses/tpl/reset.html'));
+                $html = file_get_contents(_($_SERVER['DOCUMENT_ROOT'].'/ses/tpl/reset.html'));
                 
                 if($lang != false){
                     if($lang == 'pt' || $lang == 'br' || $lang == 'pt_BR'){
-                        $html = file_get_contents('/var/www/ses/tpl/reset.html');
+                        $html = file_get_contents($_SERVER['DOCUMENT_ROOT'].'/ses/tpl/reset.html');
                     }
                 }
                 

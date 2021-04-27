@@ -29,11 +29,11 @@
                 </div>
                 <div class="widget-content center">
                     <strong>Wiki</strong><br/>
-                    <a href="https://wiki.<?php echo _($appDomain); ?>">https://wiki.<?php echo _($appDomain); ?>/</a>
+                    <a href="http://<?php echo _($appDomain); ?>/wiki">http://<?php echo _($appDomain); ?>/wiki/</a>
                     <br/>
                     <br/>
                     <strong><?php echo _('Forum'); ?></strong><br/>
-                    <a href="https://forum.<?php echo _($appDomain); ?>">https://forum.<?php echo _($appDomain); ?>/</a>
+                    <a href="http://<?php echo _($appDomain); ?>/forum/">http://<?php echo _($appDomain); ?>/forum/</a>
                 </div>
             </div>
         </div>

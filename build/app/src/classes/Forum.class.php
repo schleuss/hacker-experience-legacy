@@ -1,6 +1,6 @@
 <?php
 
-require_once '/var/www/config.php';
+require_once 'config.php';
 
 class Forum {
 
@@ -9,7 +9,7 @@ class Forum {
         global $phpbb_root_path, $phpEx, $user, $db, $config, $cache, $template, $auth;
         
         define('IN_PHPBB', true);
-        $phpbb_root_path = (defined('PHPBB_ROOT_PATH')) ? PHPBB_ROOT_PATH : '/var/www/forum/';
+        $phpbb_root_path = (defined('PHPBB_ROOT_PATH')) ? PHPBB_ROOT_PATH : './forum/';
         
         $phpEx = substr(strrchr(__FILE__, '.'), 1);
         
@@ -139,7 +139,7 @@ class Forum {
                 $postTitle .= '...';
             }
             
-            require_once '/var/www/classes/Purifier.class.php';
+            require_once $_SERVER['DOCUMENT_ROOT'].'/classes/Purifier.class.php';
             $purifier = new Purifier();
             $purifier->set_config('text');
                     
@@ -166,7 +166,7 @@ class Forum {
             if($_SERVER['SERVER_NAME'] == 'localhost'){
                 $postLink = '/forum/'.'viewtopic.php?f='.$postInfo['forum_id'].'&t='.$postInfo['topic_id'];
             } else {
-                $postLink = 'https://forum.'.$appDomain.'/'.'viewtopic.php?f='.$postInfo['forum_id'].'&t='.$postInfo['topic_id'];
+                $postLink = 'http://'.$appDomain.'/forum/'.'viewtopic.php?f='.$postInfo['forum_id'].'&t='.$postInfo['topic_id'];
             }
             
             switch($type){

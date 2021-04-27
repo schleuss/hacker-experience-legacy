@@ -1,9 +1,9 @@
 <?php
 
 require 'config.php';
-require '/var/www/classes/Session.class.php';
-require '/var/www/classes/Player.class.php';
-require '/var/www/classes/System.class.php';
+require $_SERVER['DOCUMENT_ROOT'].'/classes/Session.class.php';
+require $_SERVER['DOCUMENT_ROOT'].'/classes/Player.class.php';
+require $_SERVER['DOCUMENT_ROOT'].'/classes/System.class.php';
 
 $session = new Session();
 $system = new System();
@@ -63,7 +63,7 @@ if(isset($_POST)){
 
             $_SESSION['language'] = 'pt_BR';
             $session->addMsg('Language changed to portuguese.', 'notice');
-            header("Location:https://br.'.$appDomain.'/");
+            header("Location:http://br.'.$appDomain.'/");
             exit();
         } elseif($lang == 'English'){
             
@@ -74,7 +74,7 @@ if(isset($_POST)){
             
             $_SESSION['language'] = 'en_US';
             $session->addMsg('Language changed to english.', 'notice');
-            header("Location:https://en.'.$appDomain.'/");
+            header("Location:http://en.'.$appDomain.'/");
             exit();
         }
         

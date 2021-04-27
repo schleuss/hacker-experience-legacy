@@ -25,6 +25,8 @@ if(isset($_SERVER['HTTP_X_DOKUWIKI_DO'])) {
     $ACT = 'show';
 }
 
+
+require_once($_SERVER['DOCUMENT_ROOT'].'/config.php');
 // load and initialize the core system
 require_once(DOKU_INC.'inc/init.php');
 
@@ -34,7 +36,7 @@ $QUERY          = trim($INPUT->str('id'));
 $ID             = getID();
 
 if($ID == 'start' && !isset($_GET['do'])){
-    header("Location:https://wiki.hackerexperience.com/en:start");
+    header("Location:http://' . $appDomain . '/wiki/en:start");
     exit();
 }
 

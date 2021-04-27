@@ -1,14 +1,15 @@
 <?php 
+
 require 'template/gameHeader.php';
 
 $requestURI = $_SERVER['REQUEST_URI'];
 $phpSelf = $_SERVER['PHP_SELF'];
+
 $crudePage = substr(substr($phpSelf, 1), 0, -4);
 
 if(!strpos($requestURI, '.php')){
     $requestURI .= '.php';
 }
-
 
 $headerArr = Array();
 $menu = Array();

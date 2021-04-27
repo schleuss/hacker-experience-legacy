@@ -2,8 +2,8 @@
 
 session_start();
 
-require '/var/www/classes/Session.class.php';
-require_once '/var/www/config.php';
+require $_SERVER['DOCUMENT_ROOT'].'/classes/Session.class.php';
+require_once 'config.php';
 
 $session = new Session();
 
@@ -212,7 +212,7 @@ if($session->issetLogin() || $loggedOut){
                             $disabled = '';
                         }
 
-                        require '/var/www/classes/Finances.class.php';
+                        require $_SERVER['DOCUMENT_ROOT'].'/classes/Finances.class.php';
                         $finances = new Finances();
 
                         $totalMoney = $finances->totalMoney();
@@ -299,7 +299,7 @@ if($session->issetLogin() || $loggedOut){
                 break;
             case 'getBRLvalue':
                 
-                require '/var/www/classes/Premium.class.php';
+                require $_SERVER['DOCUMENT_ROOT'].'/classes/Premium.class.php';
                 $premium = new Premium();
                 
                 $result['msg'] = $premium->exchange_rate('USD', 'BRL', 1, 2);
@@ -330,7 +330,7 @@ if($session->issetLogin() || $loggedOut){
                     break;
                 }
                 
-                require '/var/www/classes/Finances.class.php';
+                require $_SERVER['DOCUMENT_ROOT'].'/classes/Finances.class.php';
                 
                 $finances = new Finances();
                 
@@ -371,9 +371,9 @@ if($session->issetLogin() || $loggedOut){
                     break;
                 }
                 
-                require '/var/www/classes/Player.class.php';
-                require '/var/www/classes/PC.class.php';
-                require '/var/www/classes/Finances.class.php';
+                require $_SERVER['DOCUMENT_ROOT'].'/classes/Player.class.php';
+                require $_SERVER['DOCUMENT_ROOT'].'/classes/PC.class.php';
+                require $_SERVER['DOCUMENT_ROOT'].'/classes/Finances.class.php';
                 
                 $software = new SoftwareVPC();
                 $finances = new Finances();
@@ -648,7 +648,7 @@ if($session->issetLogin() || $loggedOut){
             case 'check-user':
             case 'check-mail':
                 
-                require '/var/www/classes/System.class.php';
+                require $_SERVER['DOCUMENT_ROOT'].'/classes/System.class.php';
                 
                 $pdo = PDO_DB::factory();
                 $system = new System();
@@ -738,7 +738,7 @@ if($session->issetLogin() || $loggedOut){
                 $moneySpent = $info->moneyresearch;
                 $totalResearched = $info->researchcount;
                 
-                require '/var/www/classes/Ranking.class.php';
+                require $_SERVER['DOCUMENT_ROOT'].'/classes/Ranking.class.php';
                 $ranking = new Ranking();
                 
                 $rankInfo = $ranking->getResearchRank($_SESSION['id']);
@@ -922,7 +922,7 @@ if($session->issetLogin() || $loggedOut){
                 break;
             case 'getPwdInfo':
                 
-                require '/var/www/classes/Process.class.php';
+                require $_SERVER['DOCUMENT_ROOT'].'/classes/Process.class.php';
                 $process = new Process();
                 $player = new Player();
                 
@@ -985,7 +985,7 @@ if($session->issetLogin() || $loggedOut){
                     exit();
                 }                
                 
-                require '/var/www/classes/Finances.class.php';
+                require $_SERVER['DOCUMENT_ROOT'].'/classes/Finances.class.php';
                 $finances = new Finances();
                 
                 $totalMoney = $finances->totalMoney();
@@ -1029,8 +1029,8 @@ if($session->issetLogin() || $loggedOut){
                 break;
             case 'getCommon':
                 
-                require '/var/www/classes/Mail.class.php';
-                require '/var/www/classes/Finances.class.php';
+                require $_SERVER['DOCUMENT_ROOT'].'/classes/Mail.class.php';
+                require $_SERVER['DOCUMENT_ROOT'].'/classes/Finances.class.php';
                 
                 $mail = new Mail();
                 $player = new Player();
@@ -1042,7 +1042,7 @@ if($session->issetLogin() || $loggedOut){
                 $common['finances'] = number_format($finances->totalMoney());
                 
                 if($session->issetMissionSession()){
-                    require '/var/www/classes/Mission.class.php';
+                    require $_SERVER['DOCUMENT_ROOT'].'/classes/Mission.class.php';
                     $mission = new Mission();
                     
                     if($mission->missionStatus($_SESSION['MISSION_ID']) == 3){
@@ -1066,7 +1066,7 @@ if($session->issetLogin() || $loggedOut){
                 break;
             case 'getTutorialVirusID':
                 
-                require '/var/www/classes/Mission.class.php';
+                require $_SERVER['DOCUMENT_ROOT'].'/classes/Mission.class.php';
                 $mission = new Mission();
                 
                 $return = '[{"id":"0","ip":"0"}]';
@@ -1088,7 +1088,7 @@ if($session->issetLogin() || $loggedOut){
                 break;            
             case 'getTutorialFirstVictim':
             
-                require '/var/www/classes/Mission.class.php';
+                require $_SERVER['DOCUMENT_ROOT'].'/classes/Mission.class.php';
                 $mission = new Mission();
                                 
                 if(isset($_SESSION['MISSION_ID'])){
@@ -1117,7 +1117,7 @@ if($session->issetLogin() || $loggedOut){
                 break;
             case 'getTotalMoney':
             
-                require '/var/www/classes/Finances.class.php';
+                require $_SERVER['DOCUMENT_ROOT'].'/classes/Finances.class.php';
                 $finances = new Finances();
                 
                 $result['msg'] = $finances->totalMoney();
@@ -1125,7 +1125,7 @@ if($session->issetLogin() || $loggedOut){
                 break;
             case 'getBankAccs':
                 
-                require '/var/www/classes/Finances.class.php';
+                require $_SERVER['DOCUMENT_ROOT'].'/classes/Finances.class.php';
                 $finances = new Finances();
 
                 $acc = $finances->htmlSelectBankAcc(1);
@@ -1141,7 +1141,7 @@ if($session->issetLogin() || $loggedOut){
                 break;
             case 'manageViruses':
                 
-                require '/var/www/classes/System.class.php';
+                require $_SERVER['DOCUMENT_ROOT'].'/classes/System.class.php';
                 $system = new System();
                 
                 $listID = $_POST['id'];
@@ -1158,7 +1158,7 @@ if($session->issetLogin() || $loggedOut){
                     break;
                 }
 
-                require_once '/var/www/classes/List.class.php';
+                require_once $_SERVER['DOCUMENT_ROOT'].'/classes/List.class.php';
                 $list = new Lists();
 
                 if(!$list->issetID($listID, 1)){
@@ -1293,10 +1293,10 @@ if($session->issetLogin() || $loggedOut){
 
             case 'warHistory':
 
-                require '/var/www/classes/Player.class.php';
+                require $_SERVER['DOCUMENT_ROOT'].'/classes/Player.class.php';
                 $player = new Player();
 
-                require '/var/www/classes/Clan.class.php';
+                require $_SERVER['DOCUMENT_ROOT'].'/classes/Clan.class.php';
                 $clan = new Clan();
 
                 $npc = new NPC();
@@ -1446,7 +1446,7 @@ if($session->issetLogin() || $loggedOut){
                     $result['msg'] = '';
                 }
 
-                require_once '/var/www/classes/Process.class.php';
+                require_once $_SERVER['DOCUMENT_ROOT'].'/classes/Process.class.php';
                 $process = new Process();
 
                 if($process->issetPID($id)){
@@ -1478,7 +1478,7 @@ if($session->issetLogin() || $loggedOut){
 
             case 'loadSoftware':
                 
-                require '/var/www/classes/Player.class.php';
+                require $_SERVER['DOCUMENT_ROOT'].'/classes/Player.class.php';
                 
                 if(isset($_POST['external'])){
                     $isExternal = TRUE;
@@ -1519,7 +1519,7 @@ if($session->issetLogin() || $loggedOut){
                     $id = $_SESSION['id'];
                 }
                 
-                require '/var/www/classes/PC.class.php';
+                require $_SERVER['DOCUMENT_ROOT'].'/classes/PC.class.php';
                 $software = new SoftwareVPC();
 
                 $pdo = PDO_DB::factory();
@@ -1559,7 +1559,7 @@ if($session->issetLogin() || $loggedOut){
                     if($session->issetMissionSession()){
                         if ($_SESSION['MISSION_TYPE'] == 2 || $_SESSION['MISSION_TYPE'] == 83) {
 
-                            require '/var/www/classes/Mission.class.php';
+                            require $_SERVER['DOCUMENT_ROOT'].'/classes/Mission.class.php';
                             $mission = new Mission();
 
                             if($_SESSION['MISSION_TYPE'] == 2){
@@ -1660,7 +1660,7 @@ if($session->issetLogin() || $loggedOut){
                 break;
             case 'loadHistory':
 
-                require '/var/www/classes/Internet.class.php';
+                require $_SERVER['DOCUMENT_ROOT'].'/classes/Internet.class.php';
                 $internet = new Internet();
 
                 $result['msg'] = $internet->history_getJSON();

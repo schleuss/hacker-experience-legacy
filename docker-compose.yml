@@ -20,7 +20,6 @@ services:
       image: php-mysql
       build: ./build/php
       restart: always
-      user: 500:500
       logging:
         options:
           max-size: "512m"
@@ -31,6 +30,8 @@ services:
           - ./data/status:/var/www/status
           - ./log:/var/log/game
           - ./conf/php.conf:/usr/local/etc/php-fpm.d/www.conf
+          # Enable CRON jobs
+          - ./build/app/src/crontab:/etc/cron.d/game
       environment: 
         - TZ=America/Sao_Paulo
       links: 

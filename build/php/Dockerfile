@@ -12,7 +12,9 @@ RUN apt-get update && apt-get install -y \
         libldap2-dev \
         libmagickwand-dev \
         imagemagick \
-        locales
+        supervisor \
+        cron \
+        locales 
 
 RUN sed -i -e 's/# en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/' /etc/locale.gen && \
     sed -i -e 's/# pt_BR.UTF-8 UTF-8/pt_BR.UTF-8 UTF-8/' /etc/locale.gen && \
@@ -53,3 +55,10 @@ RUN docker-php-ext-install -j$(nproc) ldap
 
 RUN apt-get install -y python python-pip python-mysqldb
 
+# Configure supervisord
+COPY config/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
+
+RUN mkdir -p /var/log/supervisord /var/run/supervisord  && \
+ chmod 777 /var/log/supervisord /var/run/supervisord
+
+CMD ["/usr/bin/supervisord", "-c", "/etc/supervisor/conf.d/supervisord.conf"]
